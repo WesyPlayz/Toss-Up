@@ -1,0 +1,17 @@
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\bin\Debug\net9.0-windows\Toss-Up.exe
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\bin\Debug\net9.0-windows\Toss-Up.deps.json
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\bin\Debug\net9.0-windows\Toss-Up.runtimeconfig.json
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\bin\Debug\net9.0-windows\Toss-Up.dll
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\bin\Debug\net9.0-windows\Toss-Up.pdb
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss_Up.Form1.resources
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.csproj.GenerateResource.cache
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.AssemblyInfoInputs.cache
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.AssemblyInfo.cs
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.csproj.CoreCompileInputs.cache
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.sourcelink.json
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.dll
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\refint\Toss-Up.dll
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.pdb
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\Toss-Up.genruntimeconfig.cache
+C:\Users\owner\Documents\GitHub\Toss-up\Toss-Up\obj\Debug\net9.0-windows\ref\Toss-Up.dll
