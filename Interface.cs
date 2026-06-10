@@ -1,5 +1,3 @@
-using System.Buffers.Text;
-
 namespace Toss_Up;
 
 /// <summary>
@@ -7,12 +5,21 @@ namespace Toss_Up;
 /// </summary>
 public partial class Interface : Form
 {
-    private const double Rate = 0.00001;
-    private const int Intermission = 4000;
-    private const string Prompt = "Hold down the button to toss!";
-    private const string Button_Text = "Click Me!";
+    #region PRIVATE CONSTANT FIELDS
 
-    private static readonly ( int X, int Y ) Start = ( 100, 320 );
+    private const double RATE = 0.00001;
+    private const int INTERMISSION = 4000;
+    private const string PROMPT_TEXT = "Hold down the button to toss!";
+    private const string BUTTON_TEXT = "Click Me!";
+
+    #endregion
+    #region PRIVATE STATIC   FIELDS
+
+    private static readonly ( int X, int Y ) SIZE  = ( 800, 400 );
+    private static readonly ( int X, int Y ) START = ( 100, 320 );
+
+    #endregion
+    #region PRIVATE INSTANCE FIELDS
 
     /// <summary>
     /// 
@@ -33,10 +40,14 @@ public partial class Interface : Form
     private ( int BASE, int CURRENT ) Power = default;
     private ( double BASE, double CURRENT ) Distance = default;
 
+    #endregion
+
     /// <summary>
     /// 
     /// </summary>
     public Interface () => this.Render();
+
+    #region PRIVATE INSTANCE INITIALIZATION
 
     /// <summary>
     /// 
@@ -48,12 +59,15 @@ public partial class Interface : Form
         this.Toss_Button.MouseUp += this.Toss!;
     }
 
+    #endregion
+    #region PRIVATE INSTANCE FUNCTIONS
+
     /// <summary>
     /// 
     /// </summary>
     private void Reset () 
     {
-        this.Toss_Button.Location = new ( Start.X, Start.Y );
+        this.Toss_Button.Location = new ( START.X, START.Y );
 
         this.Display_Prompt();
 
@@ -71,6 +85,9 @@ public partial class Interface : Form
 
         if ( score > this.Best_Score ) this.Best_Score = score;
     }
+
+    #endregion
+    #region PRIVATE INSTANCE EVENTS
 
     /// <summary>
     /// 
@@ -98,7 +115,7 @@ public partial class Interface : Form
     {
         if ( !this.Input ) return;
 
-        if ( DateTime.Now - this.Last_Tick >= TimeSpan.FromSeconds( Rate ) )
+        if ( DateTime.Now - this.Last_Tick >= TimeSpan.FromSeconds( RATE ) )
         {
             this.Last_Tick = DateTime.Now;
 
@@ -142,7 +159,7 @@ public partial class Interface : Form
 
         if ( this.Power.CURRENT == 0 )
         {
-            this.Toss_Button.Location = new ( this.Toss_Button.Location.X, Start.Y );
+            this.Toss_Button.Location = new ( this.Toss_Button.Location.X, START.Y );
 
             this.Distance = default;
             this.Power = default;
@@ -155,12 +172,12 @@ public partial class Interface : Form
             this.Toss_Button.MouseDown -= this.Charge!;
             this.Toss_Button.MouseUp -= this.Toss!;
 
-            await Task.Delay( Intermission );
+            await Task.Delay( INTERMISSION );
             this.Reset();
 
             return;
         }
-        if ( DateTime.Now - this.Last_Tick >= TimeSpan.FromSeconds( Rate ) )
+        if ( DateTime.Now - this.Last_Tick >= TimeSpan.FromSeconds( RATE ) )
         {
             this.Last_Tick = DateTime.Now;
 
@@ -174,13 +191,13 @@ public partial class Interface : Form
 
             this.Toss_Button.Location = new(
                 this.Toss_Button.Location.X + ( int )dx,
-                Start.Y - ( int )( -4 * this.Power.BASE * ( t - 0.5 ) * ( t - 0.5 ) + this.Power.BASE )
+                START.Y - ( int )( -4 * this.Power.BASE * ( t - 0.5 ) * ( t - 0.5 ) + this.Power.BASE )
             );
             this.Power.CURRENT--;
 
             if ( t >= 1 )
             {
-                this.Toss_Button.Location = new( this.Toss_Button.Location.X, Start.Y );
+                this.Toss_Button.Location = new( this.Toss_Button.Location.X, START.Y );
 
                 this.Distance = default;
                 this.Power = default;
@@ -193,11 +210,13 @@ public partial class Interface : Form
                 this.Toss_Button.MouseDown -= this.Charge!;
                 this.Toss_Button.MouseUp -= this.Toss!;
 
-                await Task.Delay( Intermission );
+                await Task.Delay( INTERMISSION );
                 this.Reset();
 
                 return;
             }
         }
     }
+
+    #endregion
 }

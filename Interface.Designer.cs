@@ -7,6 +7,8 @@ namespace Toss_Up;
 /// </summary>
 partial class Interface 
 {
+    #region PRIVATE   INSTANCE FIELDS
+
     /// <summary>
     /// 
     /// </summary>
@@ -14,6 +16,9 @@ partial class Interface
 
     private Label Prompt_Text;
     private Button Toss_Button;
+
+    #endregion
+    #region PROTECTED OVERRIDE FUNCTIONS
 
     /// <summary>
     /// 
@@ -25,6 +30,9 @@ partial class Interface
 
         base.Dispose( disposing );
     }
+
+    #endregion
+    #region PRIVATE   INSTANCE FUNCTIONS
 
     /// <summary>
     /// 
@@ -38,7 +46,7 @@ partial class Interface
         this.Name = "Toss-Up";
         this.Text = "Toss-Up";
 
-        this.ClientSize = new ( 800, 400 );
+        this.ClientSize = new ( SIZE.X, SIZE.Y );
 
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
         this.MaximizeBox = false;
@@ -47,7 +55,7 @@ partial class Interface
 
         this.Prompt_Text = new ()
         {
-            Text = Prompt,
+            Text = PROMPT_TEXT,
 
             Location = new ( 100, 30 ),
             Size = new ( 600, 60 ),
@@ -58,9 +66,9 @@ partial class Interface
         
         this.Toss_Button = new ()
         {
-            Text = Button_Text,
+            Text = BUTTON_TEXT,
 
-            Location = new ( Start.X, Start.Y ),
+            Location = new ( START.X, START.Y ),
             Size = new ( 90, 30 ),
 
             BackColor = Color.DarkGray
@@ -87,8 +95,8 @@ partial class Interface
     /// </summary>
     private void Display_Prompt () 
     {
-        this.Prompt_Text.Text = Prompt;
-        this.Toss_Button.Text = Button_Text;
+        this.Prompt_Text.Text = PROMPT_TEXT;
+        this.Toss_Button.Text = BUTTON_TEXT;
     }
 
     /// <summary>
@@ -108,4 +116,6 @@ partial class Interface
     {
         this.Toss_Button.Text = $"{ power }";
     }
+
+    #endregion
 }
