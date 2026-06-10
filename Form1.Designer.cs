@@ -12,6 +12,7 @@ partial class Interface
     /// </summary>
     private IContainer Components = null;
 
+    private Label Prompt_Text;
     private Button Toss_Button;
 
     /// <summary>
@@ -44,22 +45,22 @@ partial class Interface
 
         this.BackColor = Color.White;
 
-        Label text = new ()
+        Prompt_Text = new ()
         {
-            Text = "Hold down the button to toss!",
+            Text = Prompt,
 
             Location = new ( 100, 30 ),
             Size = new ( 600, 60 ),
 
             TextAlign = ContentAlignment.MiddleCenter
         };
-        this.Controls.Add( text );
+        this.Controls.Add( Prompt_Text );
         
         this.Toss_Button = new ()
         {
-            Text = "Click Me!",
+            Text = Button_Text,
 
-            Location = new ( 100, 320 ),
+            Location = new ( Start.X, Start.Y ),
             Size = new ( 90, 30 ),
 
             BackColor = Color.DarkGray
