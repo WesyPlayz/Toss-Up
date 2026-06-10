@@ -8,7 +8,7 @@ Score - Once the button lands, it will produce a score in which if is greater th
 Intermission - While score is being displayed, the app will take a few seconds to show the current score and then reset the button.
 
 ## Prerequistits :
-This app requires .Net 9.0 or newer and the WinForms Library.
+This app requires .Net 9.0 or newer and Windows 10 OS or newer.
 
 ## In-App Screenshots :
 <img width="400" height="221" alt="image" src="https://github.com/user-attachments/assets/d22c86a0-1d0a-442c-ad10-8dec181d3691" />
