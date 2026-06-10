@@ -45,7 +45,7 @@ partial class Interface
 
         this.BackColor = Color.White;
 
-        Prompt_Text = new ()
+        this.Prompt_Text = new ()
         {
             Text = Prompt,
 
@@ -54,7 +54,7 @@ partial class Interface
 
             TextAlign = ContentAlignment.MiddleCenter
         };
-        this.Controls.Add( Prompt_Text );
+        this.Controls.Add( this.Prompt_Text );
         
         this.Toss_Button = new ()
         {
@@ -80,5 +80,32 @@ partial class Interface
         this.PerformLayout();
 
         this.Initialize();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void Display_Prompt () 
+    {
+        this.Prompt_Text.Text = Prompt;
+        this.Toss_Button.Text = Button_Text;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name = "score"></param>
+    private void Display_Score ( int score ) 
+    {
+        this.Prompt_Text.Text = ( score <= this.Best_Score ? $"You scored { score } points!" : $"New best score { score } points!" );
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name = "power"></param>
+    private void Display_Power ( int power ) 
+    {
+        this.Toss_Button.Text = $"{ power }";
     }
 }

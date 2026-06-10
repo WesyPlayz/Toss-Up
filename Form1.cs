@@ -8,6 +8,7 @@ namespace Toss_Up;
 public partial class Interface : Form
 {
     private const double Rate = 0.00001;
+    private const int Intermission = 4000;
     private const string Prompt = "Hold down the button to toss!";
     private const string Button_Text = "Click Me!";
 
@@ -47,16 +48,28 @@ public partial class Interface : Form
         this.Toss_Button.MouseUp += this.Toss!;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void Reset () 
     {
         this.Toss_Button.Location = new ( Start.X, Start.Y );
 
-        //this.Display_Prompt();
+        this.Display_Prompt();
+
+        this.Toss_Button.MouseDown += this.Charge!;
+        this.Toss_Button.MouseUp += this.Toss!;
     }
 
-    private void Calculate_Score ( int score ) 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name = "score"></param>
+    private void Apply_Score ( int score ) 
     {
+        this.Display_Score( score );
 
+        if ( score > this.Best_Score ) this.Best_Score = score;
     }
 
     /// <summary>
@@ -88,7 +101,8 @@ public partial class Interface : Form
         if ( DateTime.Now - this.Last_Tick >= TimeSpan.FromSeconds( Rate ) )
         {
             this.Last_Tick = DateTime.Now;
-            this.Toss_Button.Text = $"{ this.Power.BASE++ }";
+
+            this.Display_Power( this.Power.BASE++ );
         }
     }
 
@@ -122,7 +136,7 @@ public partial class Interface : Form
     /// </summary>
     /// <param name = "sender"></param>
     /// <param name = "args"></param>
-    private void Tick_Toss ( object sender, EventArgs args ) 
+    private async void Tick_Toss ( object sender, EventArgs args ) 
     {
         if ( this.Input ) return;
 
@@ -133,11 +147,15 @@ public partial class Interface : Form
             this.Distance = default;
             this.Power = default;
 
+            this.Apply_Score( this.Toss_Button.Location.X );
             this.Process.Stop();
 
             this.Process.Tick -= this.Tick_Toss!;
 
-            Thread.Sleep( 16 );
+            this.Toss_Button.MouseDown -= this.Charge!;
+            this.Toss_Button.MouseUp -= this.Toss!;
+
+            await Task.Delay( Intermission );
             this.Reset();
 
             return;
@@ -167,10 +185,16 @@ public partial class Interface : Form
                 this.Distance = default;
                 this.Power = default;
 
-                this.Calculate_Score( this.Toss_Button.Location.X );
+                this.Apply_Score( this.Toss_Button.Location.X );
                 this.Process.Stop();
 
                 this.Process.Tick -= this.Tick_Toss!;
+
+                this.Toss_Button.MouseDown -= this.Charge!;
+                this.Toss_Button.MouseUp -= this.Toss!;
+
+                await Task.Delay( Intermission );
+                this.Reset();
 
                 return;
             }
